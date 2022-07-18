@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12-常用指令-绑定样式</title>
+    <!--1、下载导入vue.js-->
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p :style="{color:'red','font-size':'100px'}">我是段落</p>
+    <p :style="[obj,obj2]">我是段落</p>
+</div>
+<script>
+    //2、创建一个vue的实例对象
+    let vue =new Vue({
+        //3、告诉vue的实例对象，将来需要控制界面上的哪个区域
+        el:'#app',
+        //4、告诉vue的实例对象，被控制区域的数据是什么
+        data:{
+            obj:{
+                "color":"red",
+                "font-size":"100px"
+            },
+            obj2:{
+                "background-color":"blue"
+            }
+        }
+    });
+</script>
+</body>
+</html>
