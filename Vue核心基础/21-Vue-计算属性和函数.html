@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>21-Vue-计算属性和函数</title>
+    <!--1、下载导入vue.js-->
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{msg2}}</p>
+    <p>{{msg2}}</p>
+    <p>{{msg2}}</p>
+    <p>{{msg1()}}</p>
+    <p>{{msg1()}}</p>
+    <p>{{msg1()}}</p>
+</div>
+<script>
+    //2、创建一个vue的实例对象
+    let vue =new Vue({
+        //3、告诉vue的实例对象，将来需要控制界面上的哪个区域
+        el:'#app',
+        //4、告诉vue的实例对象，被控制区域的数据是什么
+        data:{
+            name:"AzrDream",
+            msg:"abcdef"
+        },
+        computed:{
+            msg2:function () {
+                console.log('计算属性被执行了');
+                return this.msg.split('').reverse().join('');
+            }
+        },
+        methods:{
+            msg1(){
+                console.log('msg1函数被执行了');
+                return this.msg.split('').reverse().join('');
+            }
+        }
+    });
+</script>
+</body>
+</html>
