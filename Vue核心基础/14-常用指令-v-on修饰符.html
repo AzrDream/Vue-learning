@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>14-常用指令-v-on修饰符</title>
+    <!--1、下载导入vue.js-->
+    <script src="js/vue.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .a{
+            width: 300px;
+            height: 300px;
+            background: red;
+        }
+        .b{
+            width: 200px;
+            height: 200px;
+            background: blue;
+        }
+        .c{
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click.once="myFn">我是按钮</button>
+    <a href="http://www.azrdream.com" @click.prevent="myFn">我是a标签</a>
+    <!--
+    默认情况下载嵌套的元素中, 如果都监听了相同的事件, 那么会触发事件冒泡
+    如果想阻止事件冒泡, 那么可以使用.stop修饰符
+    -->
+    <div class="a" @click="myFn1">
+        <div class="b" @click.stop="myFn2">
+            <div class="c" @click="myFn3"></div>
+        </div>
+    </div>
+    <!--
+       如果想让回调只有当前元素触发事件的时候才执行, 那么就可以使用.self修饰符
+       -->
+    <div class="a" @click="myFn1">
+        <div class="b" @click.self="myFn2">
+            <div class="c" @click="myFn3"></div>
+        </div>
+    </div>
+    <!--
+    默认情况下是事件冒泡, 如果想变成事件捕获, 那么就需要使用.capture修饰符
+    -->
+    <div class="a" @click.capture="myFn1">
+        <div class="b" @click.capture="myFn2">
+            <div class="c" @click.capture="myFn3"></div>
+        </div>
+    </div>
+</div>
+<script>
+    //2、创建一个vue的实例对象
+    let vue =new Vue({
+        //3、告诉vue的实例对象，将来需要控制界面上的哪个区域
+        el:'#app',
+        //4、告诉vue的实例对象，被控制区域的数据是什么
+        data:{
+        },
+        methods:{
+            myFn(){
+                alert(666)
+            },
+            myFn1(){
+                console.log("爷爷");
+            },
+            myFn2(){
+                console.log("爸爸");
+            },
+            myFn3(){
+                console.log("儿子");
+            }
+        }
+    });
+</script>
+</body>
+</html>
