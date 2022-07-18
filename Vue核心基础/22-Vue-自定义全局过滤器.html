@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>22-Vue-自定义全局过滤器</title>
+    <!--1、下载导入vue.js-->
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{name | formartStr1 | formartStr2}}</p>
+</div>
+<script>
+    Vue.filter("formartStr1",value=>{
+        value = value.replace(/学院/g, "大学");
+        console.log(value);
+        return value;
+    });
+    Vue.filter("formartStr2",value=>{
+        value = value.replace(/大学/g, "幼儿园");
+        console.log(value);
+        return value;
+    });
+    //2、创建一个vue的实例对象
+    let vue =new Vue({
+        //3、告诉vue的实例对象，将来需要控制界面上的哪个区域
+        el:'#app',
+        //4、告诉vue的实例对象，被控制区域的数据是什么
+        data:{
+            name:"一学院，二学院，三学院，四学院"
+        }
+    });
+</script>
+</body>
+</html>
