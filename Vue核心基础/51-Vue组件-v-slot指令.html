@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>51-Vue组件-v-slot指令</title>
+    <!--1、下载导入vue.js-->
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <father></father>
+</div>
+<template id="father">
+    <div>
+        <p>我是父组件</p>
+        <son>
+            <template v-slot:one>
+                <div>我是追加的内容1</div>
+                <div>我是追加的内容1</div>
+            </template>
+            <template #two>
+                <div>我是追加的内容2</div>
+                <div>我是追加的内容2</div>
+            </template>
+        </son>
+    </div>
+</template>
+<template id="son">
+    <div>
+        <p>我是子组件</p>
+        <slot name="one">我是默认的数据</slot>
+        <slot name="two">我是默认的数据</slot>
+    </div>
+</template>
+<script>
+    //2、创建一个vue的实例对象
+    let vue = new Vue({
+        //3、告诉vue的实例对象，将来需要控制界面上的哪个区域
+        el: '#app',
+        //4、告诉vue的实例对象，被控制区域的数据是什么
+        data: {},
+        components: {
+            "father": {
+                template: "#father",
+                components: {
+                    "son": {
+                        template: "#son"
+                    }
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
