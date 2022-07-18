@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>27-Vue-过渡动画注意点</title>
+    <!--1、下载导入vue.js-->
+    <script src="js/vue.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        .one-enter{
+            opacity: 0;
+        }
+        .one-enter-to{
+            opacity: 1;
+            margin-left: 500px;
+        }
+        .one-enter-active{
+            transition: all 3s;
+        }
+        .two-enter{
+            opacity: 0;
+        }
+        .two-enter-to{
+            opacity: 1;
+            margin-top: 500px;
+        }
+        .two-enter-active{
+            transition: all 3s;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="toggle">我是按钮</button>
+    <transition appear name="one">
+        <div class="box" v-show="isShow"></div>
+    </transition>
+    <transition appear name="two">
+        <div class="box" v-show="isShow"></div>
+    </transition>
+</div>
+<script>
+    //2、创建一个vue的实例对象
+    let vue =new Vue({
+        //3、告诉vue的实例对象，将来需要控制界面上的哪个区域
+        el:'#app',
+        //4、告诉vue的实例对象，被控制区域的数据是什么
+        data:{
+            isShow: true
+        },
+        methods:{
+            toggle() {
+                this.isShow = !this.isShow;
+            }
+        }
+    });
+</script>
+</body>
+</html>
