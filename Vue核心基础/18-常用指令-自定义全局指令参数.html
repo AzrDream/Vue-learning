@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>18-常用指令-自定义全局指令参数</title>
+    <!--1、下载导入vue.js-->
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p v-color="curColor">我是段落</p>
+    <input type="text" v-focus>
+</div>
+<script>
+    Vue.directive("color",{
+        bind: function (el,obj) {
+            el.style.color = obj.value
+        }
+    });
+    Vue.directive("focus",{
+        // 这里的el就是被绑定指令的那个元素
+        inserted:function (el) {
+            el.focus();
+        }
+    });
+    //2、创建一个vue的实例对象
+    let vue =new Vue({
+        //3、告诉vue的实例对象，将来需要控制界面上的哪个区域
+        el:'#app',
+        //4、告诉vue的实例对象，被控制区域的数据是什么
+        data:{
+            curColor:"green"
+        }
+    });
+</script>
+</body>
+</html>
