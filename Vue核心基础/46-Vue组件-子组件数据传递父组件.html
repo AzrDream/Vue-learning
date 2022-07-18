@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>45-Vue组件-父子组件方法传递</title>
+    <!--1、下载导入vue.js-->
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <father></father>
+</div>
+<template id="father">
+    <div>
+        <button @click="say">我是父组件</button>
+        <son @parentsay="say"></son>
+    </div>
+</template>
+<template id="son">
+    <div>
+        <button @click="sonFn">我是子组件</button>
+    </div>
+</template>
+<script>
+    //2、创建一个vue的实例对象
+    let vue =new Vue({
+        //3、告诉vue的实例对象，将来需要控制界面上的哪个区域
+        el:'#app',
+        //4、告诉vue的实例对象，被控制区域的数据是什么
+        data:{
+            name:"AzrDream"
+        },
+        components: {
+            "father": {
+                template: "#father",
+                methods:{
+                    say(data){
+                        console.log("我是父组件的方法",data);
+                    }
+                },
+                data: function(){
+                    return {
+                    }
+                },
+                components: {
+                    'son': {
+                        template: '#son',
+                        methods: {
+                            sonFn:function () {
+                                // 第一个参数：需要调用的函数名称
+                                // 后续的参数：给调用的函数传递的参数
+                                this.$emit("parentsay","贾凯文")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
