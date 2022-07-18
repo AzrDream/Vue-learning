@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06常用指令v-text和v-html</title>
+    <!--1、下载导入vue.js-->
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--插值的方式: 可以将指定的数据插入到指定的位置-->
+    <!--    <p>++++{{ name }}++++</p>-->
+    <!--插值的方式: 不会解析HTML-->
+    <!--    <p>++++{{ msg }}++++</p>-->
+    <!--v-text的方式: 会覆盖原有的内容-->
+    <!--    <p v-text="name">++++++++</p>-->
+    <!--v-text的方式: 也不会解析HTML-->
+    <!--    <p v-text="msg">++++++++</p>-->
+    <!--v-html的方式: 会覆盖原有的内容-->
+    <p v-html="name">++++++++</p>
+    <!--v-html的方式:会解析HTML-->
+    <p v-html="msg">++++++++</p>
+</div>
+<script>
+    //2、创建一个vue的实例对象
+    let vue =new Vue({
+        //3、告诉vue的实例对象，将来需要控制界面上的哪个区域
+        el:'#app',
+        //4、告诉vue的实例对象，被控制区域的数据是什么
+        data:{
+            name:"AzrDream",
+            msg: "<span>我是span</span>"
+        }
+    });
+</script>
+</body>
+</html>
