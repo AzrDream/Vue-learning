@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09-常用指令v-for</title>
+    <!--1、下载导入vue.js-->
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(value,index) in list">{{index}}--{{value}}</li>
+        <li v-for="(value,index) in abcdefg">{{index}}--{{value}}</li>
+        <li v-for="(value,key) in obj">{{key}}--{{value}}</li>
+        <li v-for="(value,index) in 6">{{index}}--{{value}}</li>
+    </ul>
+</div>
+<script>
+    //2、创建一个vue的实例对象
+    let vue =new Vue({
+        //3、告诉vue的实例对象，将来需要控制界面上的哪个区域
+        el:'#app',
+        //4、告诉vue的实例对象，被控制区域的数据是什么
+        data:{
+            list: ['张三','李四','王五','赵六'],
+            obj: {
+                name:'jkw',
+                age:'22',
+                gender:'man',
+                class:'小学'
+            }
+        }
+    });
+</script>
+</body>
+</html>
