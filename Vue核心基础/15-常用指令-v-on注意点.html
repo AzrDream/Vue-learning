@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>15-常用指令-v-on注意点</title>
+    <!--1、下载导入vue.js-->
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <button @click="myFn('jkw',22,$event)">我是按钮</button>
+</div>
+<script>
+    //2、创建一个vue的实例对象
+    let vue =new Vue({
+        //3、告诉vue的实例对象，将来需要控制界面上的哪个区域
+        el:'#app',
+        //4、告诉vue的实例对象，被控制区域的数据是什么
+        data:{
+            name:'jkw'
+        },
+        methods:{
+            myFn(name, age, e){
+                console.log(name, age, e);
+                console.log(this.name);
+            }
+        }
+    });
+</script>
+</body>
+</html>
