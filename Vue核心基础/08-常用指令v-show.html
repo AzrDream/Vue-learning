@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08-常用指令v-show</title>
+    <!--1、下载导入vue.js-->
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p v-if="true">我是v-if true</p>
+    <p v-if="false">我是v-if false</p>
+    <p v-show="true">我是true</p>
+    <p v-show="false">我是false</p>
+</div>
+<script>
+    //2、创建一个vue的实例对象
+    let vue =new Vue({
+        //3、告诉vue的实例对象，将来需要控制界面上的哪个区域
+        el:'#app',
+        //4、告诉vue的实例对象，被控制区域的数据是什么
+        data:{
+            name:"AzrDream"
+        }
+    });
+</script>
+</body>
+</html>
