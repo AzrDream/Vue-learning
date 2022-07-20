@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>56-Vuex-getters属性</title>
+    <!--1、下载导入vue.js-->
+    <script src="js/vue.js"></script>
+    <script src="js/vuex.js"></script>
+</head>
+<body>
+<div id="app">
+    <father></father>
+</div>
+<template id="father">
+    <div>
+        {{this.$store.getters.format}}
+        {{this.$store.getters.format}}
+        {{this.$store.getters.format}}
+    </div>
+</template>
+<script>
+    const store = new Vuex.Store({
+        // 这里的state就相当于组件的data
+        state: {
+            count: 0
+        },
+        mutations: {
+        },
+        getters: {
+            format(state){
+                console.log("getters方法被执行了");
+                return state.count + 10;
+            }
+        }
+    });
+    //2、创建一个vue的实例对象
+    let vue =new Vue({
+        //3、告诉vue的实例对象，将来需要控制界面上的哪个区域
+        el:'#app',
+        //4、告诉vue的实例对象，被控制区域的数据是什么
+        data:{
+            name:"AzrDream"
+        },
+        components: {
+            "father": {
+                template: "#father",
+                store: store,
+            }
+        }
+    });
+</script>
+</body>
+</html>
