@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>76-Vue-ElementUI</title>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>
+<!--
+1.什么是elementUI?
+ElementUI是饿了么前端团队推出的一款基于Vue的桌面端UI框架
+大白话: 和Bootstrap一样对原生的HTML标签进行了封装, 进行了美化, 让我们能够专注于业务逻辑而不是UI界面
+
+2.elementUI使用
+https://element.eleme.cn/#/zh-CN/component/installation
+-->
+<!--
+1.elementUI优化
+默认情况下无论我们有没有使用到某个组件, 在打包的时候都会将elementUI中所有的组件打包到我们的项目中
+这样就导致了我们的项目体积比较大, 用户访问比较慢
+
+2.如何优化
+为了解决这个问题, elementUI推出了按需导入, 按需打包. 也就是只会将我们用到的组件打包了我们的项目中
+没有用到的组件不会被打包
+https://element.eleme.cn/#/zh-CN/component/quickstart
+-->
